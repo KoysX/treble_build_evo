@@ -17,7 +17,7 @@ BD=$PWD/treble_build_evo/GSI
 initRepos() {
     if [ ! -d .repo ]; then
         echo "--> Initializing workspace"
-        repo init -u https://github.com/Evolution-X/manifest -b udc --depth=1
+        repo init -u https://github.com/Evolution-XYZ/manifest -b udc --git-lfs --depth 1
         echo
 
         echo "--> Preparing local manifest"
@@ -29,7 +29,7 @@ initRepos() {
 
 syncRepos() {
     echo "--> Syncing repos"
-    repo sync -c --force-sync --no-clone-bundle --no-tags -j8
+    repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
     echo
 }
 
